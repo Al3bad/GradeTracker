@@ -8,7 +8,6 @@
 import Foundation
 import SwiftData
 
-
 @Model
 class Assignment: Identifiable {
     var id: UUID

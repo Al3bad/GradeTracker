@@ -14,6 +14,7 @@ class Course: Identifiable {
     var title: String
     var credits: Int
     var goal: Double? // Optional to set the goal
+    @Relationship(deleteRule: .cascade) var assignments = [Assignment]()
 
     init(id: UUID = UUID(), title: String = "", credits: Int = 0, goal: Double? = nil) {
         self.id = id

@@ -15,13 +15,12 @@ class Semester: Identifiable {
     var title: String
     var startDate: Date
     var isComplete: Bool
-    var courses: [Course]
+    @Relationship(deleteRule: .cascade) var courses = [Course]()
 
-    init(id: UUID = UUID(), title: String = "", startDate: Date = Date(), isComplete: Bool = false, courses: [Course] = []) {
+    init(id: UUID = UUID(), title: String = "", startDate: Date = Date(), isComplete: Bool = false) {
         self.id = id
         self.title = title
         self.startDate = startDate
         self.isComplete = isComplete
-        self.courses = courses
     }
 }
