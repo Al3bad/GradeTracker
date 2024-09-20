@@ -51,8 +51,10 @@
 		313947CD2C9D618A0050D95E /* GradeTracker */ = {
 			isa = PBXGroup;
 			children = (
+				313947DE2C9D61B30050D95E /* Utility */,
+				313947DD2C9D61A60050D95E /* Model */,
+				313947DC2C9D619F0050D95E /* View */,
 				313947CE2C9D618A0050D95E /* GradeTrackerApp.swift */,
-				313947D02C9D618A0050D95E /* ContentView.swift */,
 				313947D22C9D618B0050D95E /* Assets.xcassets */,
 				313947D42C9D618B0050D95E /* Preview Content */,
 			);
@@ -65,6 +67,28 @@
 				313947D52C9D618B0050D95E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		313947DC2C9D619F0050D95E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				313947D02C9D618A0050D95E /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		313947DD2C9D61A60050D95E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		313947DE2C9D61B30050D95E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
