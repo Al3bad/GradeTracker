@@ -15,6 +15,8 @@ struct AddCourseView: View {
     @State private var course: Course = Course()
     @State private var newAssignment = ""
     
+    @Binding var selectedSemester: Semester?
+    
     var body: some View {
         NavigationStack{
             Form{
@@ -48,7 +50,9 @@ struct AddCourseView: View {
     }
     
     func AddCourse(){
-        modelContext.insert(course)
+        if selectedSemester != nil {
+            selectedSemester?.courses.append(course)
+        }
         dismiss()
     }
 }
@@ -63,7 +67,7 @@ struct AddCourseView: View {
             credits: 12,
             goal: 80.0
             )
-        return AddCourseView()
+        return AddCourseView(selectedSemester: .constant(nil))
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

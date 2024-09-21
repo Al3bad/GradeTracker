@@ -10,23 +10,56 @@ import SwiftData
 
 struct CoursesListingView: View {
     @Environment(\.modelContext) var modelContext
-
-    @Query var courses: [Course]
+    
+    @State private var showingSheet = false
+    
+//    var selectedSemester: Semester?
+    @Binding var semester: Semester?
     
     var body: some View {
-        List {
-            ForEach(courses) { course in
-                NavigationLink(value: course) {
-                    RowView(item: course.title)
+        
+        Form{
+            Section(header: HStack {
+                Text("Courses")
+                Spacer()
+                Button("", systemImage: "plus") {
+                    showingSheet.toggle()
+                    
+                }
+                .padding(.bottom, 5)
+            }){
+                List {
+                    ForEach(semester?.courses ?? []) { course in
+                        NavigationLink(value: course) {
+                            RowView(item: course.title)
+                        }
                     }
                 }
             }
         }
-
+        .sheet(isPresented: $showingSheet) {
+            AddCourseView(selectedSemester: $semester)
+                .presentationDetents([.medium])
+                .presentationDragIndicator(.visible)
+        }
+        
+    }
+    
+    
 }
 
 
 
-#Preview {
-    CoursesListingView()
-}
+    #Preview {
+        do {
+            let config = ModelConfiguration(isStoredInMemoryOnly: true)
+            let container = try ModelContainer(for: Course.self, configurations: config)
+            
+            return CoursesListingView(semester: .constant(nil))
+                .modelContainer(container)
+        } catch {
+            fatalError("Failed to create model container: \(error)")
+        }
+    }
+    
+
