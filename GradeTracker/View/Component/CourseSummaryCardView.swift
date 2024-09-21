@@ -10,13 +10,14 @@ import SwiftData
 
 struct CourseSummaryCardView: View {
     
-    var goal: Double
+    var goal: Double?
     var assignments: [Assignment]
     
     var body: some View {
         let totalMark = assignments.reduce(0) { $0 + ($1.mark ?? 0) }
         let totalWeight = assignments.reduce(0) { $0 + $1.weight }
-        let remaining = goal - totalMark
+        let totalWeight2 = totalWeight < 100 ? 100 : totalWeight
+        let remaining = goal ?? 0 - totalMark
         
         VStack {
             HStack {
@@ -27,20 +28,22 @@ struct CourseSummaryCardView: View {
                         HStack {
                             Text("\(totalMark.truncated)%")
                             Text("/")
-                            Text("\(totalWeight.truncated)%")
+                            Text("\(totalWeight2.truncated)%")
                         }
                     }
-                    VStack(alignment: .leading) {
-                        Text("Target")
-                            .bold()
-                        HStack {
-                            Text("\(goal.truncated)%")
+                    if goal != nil {
+                        VStack(alignment: .leading) {
+                            Text("Target")
+                                .bold()
+                            HStack {
+                                Text("\(goal!.truncated)%")
+                            }
                         }
                     }
                 }
                 Spacer()
                 if assignments.count > 0 {
-                    ProgressDonutChart(current: totalMark, total: totalWeight, mark: goal)
+                    ProgressDonutChart(current: totalMark, total: totalWeight2, mark: goal)
                         .frame(maxWidth: 164)
                 } else {
                     ProgressDonutChart(current: 0, total: 100, mark: goal)
