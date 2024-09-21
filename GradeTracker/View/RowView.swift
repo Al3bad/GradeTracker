@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct RowView: View {
-//    var item:
+    var item: Course
     
     var body: some View {
         HStack{
             VStack(alignment: .leading){
-                Text("Course Name")
+                Text(item.title)
             }
             
             Spacer()
@@ -30,5 +31,19 @@ struct RowView: View {
 }
 
 #Preview {
-    RowView()
+    
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: Course.self, configurations: config)
+        let example = Course(
+            id: UUID(),
+            title: "iPhone Software Engineering",
+            credits: 12,
+            goal: 80.0
+            )
+        return RowView(item: example)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container.")
+    }
 }
