@@ -19,14 +19,17 @@ struct EditAssignmentView: View {
                 Section(header: Text("Assignment Details")){
                     LabeledContent("Title"){
                         TextField("title", text: $assignment.title)
+                            .multilineTextAlignment(.trailing)
                     }
                     
                     LabeledContent("Weight"){
                         TextField("Weight", value: $assignment.weight, format: .number)
+                            .multilineTextAlignment(.trailing)
                     }
                     
                     LabeledContent("Mark"){
                         TextField("Mark", value: $assignment.mark, format: .number)
+                            .multilineTextAlignment(.trailing)
                     }
                     
                     DatePicker(

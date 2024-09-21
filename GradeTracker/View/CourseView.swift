@@ -9,48 +9,61 @@ import SwiftUI
 import SwiftData
 
 struct CourseView: View {
-
+    
     @State private var showingSheet = false
     var course: Course
+    @State var navigated = false
+    
+    @State var assignmentToEdit: Assignment?
     
     var body: some View {
-        List {
-            Section {
-                CourseSummaryCardView(goal: course.goal, assignments: course.assignments)
-            }
-            
-            Section(header: HStack {
-                Text("Assignment")
-                Spacer()
-                Button("", systemImage: "plus") {
-                    showingSheet.toggle()
+        NavigationStack{
+            List {
+                Section {
+                    CourseSummaryCardView(goal: course.goal, assignments: course.assignments)
                 }
-                .padding(.bottom, 5)
-            }) {
-                ForEach(course.assignments) { assignment in
-                    HStack {
-                        Text(assignment.title)
-                        Spacer()
+                
+                Section(header: HStack {
+                    Text("Assignment")
+                    Spacer()
+                    Button("", systemImage: "plus") {
+                        showingSheet.toggle()
+                    }
+                    .padding(.bottom, 5)
+                }) {
+                    ForEach(course.assignments) { assignment in
                         HStack {
-                            if (assignment.mark != nil) {
-                                Text(assignment.mark!.truncated)
-                                    .foregroundStyle(Color(red: 58/255, green: 175/255, blue: 88/255))
-                            } else {
-                                Text("-")
+                            Text(assignment.title)
+                            Spacer()
+                            HStack {
+                                if (assignment.mark != nil) {
+                                    Text(assignment.mark!.truncated)
+                                        .foregroundStyle(Color(red: 58/255, green: 175/255, blue: 88/255))
+                                } else {
+                                    Text("-")
+                                        .foregroundStyle(.secondary)
+                                }
+                                Text("/")
                                     .foregroundStyle(.secondary)
+                                Text(assignment.weight.truncated)
                             }
-                            Text("/")
-                                .foregroundStyle(.secondary)
-                            Text(assignment.weight.truncated)
                         }
+                        .swipeActions {
+                            Button("Edit", action: { assignmentToEdit = assignment })
+                                .tint(.blue)
+                        }
+                        
                     }
                 }
             }
-        }
-        .sheet(isPresented: $showingSheet) {
-            NewAssignmentSheetView(course: course)
-                .presentationDetents([.medium])
-                .presentationDragIndicator(.visible)
+            .sheet(isPresented: $showingSheet) {
+                NewAssignmentSheetView(course: course)
+                    .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
+            }
+            .sheet(item: $assignmentToEdit) { assignment in
+                EditAssignmentView(assignment: assignment)
+            }
         }
     }
 }
@@ -81,3 +94,4 @@ struct CourseView: View {
         fatalError("Failed to create model container.")
     }
 }
+
