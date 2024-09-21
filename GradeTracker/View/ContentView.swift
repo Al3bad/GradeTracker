@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.modelContext) var modelContext
+    @State private var path = [Course]()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Test")
+        NavigationStack(path: $path){
+            CoursesListingView()
+                .navigationTitle("Courses")
+                .toolbar{
+                    Button("Add Courses", systemImage: "plus", action: AddCourse)
+                }
         }
-        .padding()
+    }
+    
+    func AddCourse(){
+        let course = Course()
+        modelContext.insert(course)
+        path = [course]
     }
 }
 
 #Preview {
     ContentView()
+        .modelContainer(for: Course.self)
 }

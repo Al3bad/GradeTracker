@@ -12,6 +12,7 @@ struct GradeTrackerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(for: Course.self)
         }
     }
 }
