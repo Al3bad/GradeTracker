@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct AddCourse: View {
+struct AddCourseView: View {
     @Environment(\.dismiss) var dismiss
     @Bindable var course: Course
     @State private var newAssignment = ""
@@ -58,7 +58,7 @@ struct AddCourse: View {
             credits: 12,
             goal: 80.0
             )
-        return AddCourse(course: example)
+        return AddCourseView(course: example)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

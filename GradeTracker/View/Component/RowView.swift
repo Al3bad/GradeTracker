@@ -9,12 +9,12 @@ import SwiftUI
 import SwiftData
 
 struct RowView: View {
-    var item: Course
+    var item: String
     
     var body: some View {
         HStack{
             VStack(alignment: .leading){
-                Text(item.title)
+                Text(item)
             }
             
             Spacer()
@@ -41,7 +41,7 @@ struct RowView: View {
             credits: 12,
             goal: 80.0
             )
-        return RowView(item: example)
+        return RowView(item: example.title)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

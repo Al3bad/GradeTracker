@@ -17,7 +17,7 @@ struct CoursesListingView: View {
         List {
             ForEach(courses) { course in
                 NavigationLink(value: course) {
-                    RowView(item: course)
+                    RowView(item: course.title)
                     }
                 }
             }
