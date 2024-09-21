@@ -26,6 +26,7 @@
 		579D247F2C9E6DEA0082C752 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D247E2C9E6DEA0082C752 /* LandingView.swift */; };
 		57DCBA942C9E9623000E7092 /* AddSemesterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DCBA932C9E9623000E7092 /* AddSemesterView.swift */; };
 		57DCBA982C9E9704000E7092 /* SemesterPickingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DCBA972C9E9704000E7092 /* SemesterPickingView2.swift */; };
+		57DCBA9B2C9EC2B3000E7092 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DCBA9A2C9EC2B3000E7092 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		579D247E2C9E6DEA0082C752 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		57DCBA932C9E9623000E7092 /* AddSemesterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSemesterView.swift; sourceTree = "<group>"; };
 		57DCBA972C9E9704000E7092 /* SemesterPickingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemesterPickingView2.swift; sourceTree = "<group>"; };
+		57DCBA9A2C9EC2B3000E7092 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,12 +107,12 @@
 			children = (
 				31806D682C9D997700E487EE /* Component */,
 				313947D02C9D618A0050D95E /* ContentView.swift */,
+				57DCBA9A2C9EC2B3000E7092 /* MainView.swift */,
 				3166BFB32C9E69E300565FF5 /* CourseView.swift */,
 				346FBD962C9D975100D3574E /* CoursesListingView.swift */,
 				57DCBA972C9E9704000E7092 /* SemesterPickingView2.swift */,
 				3480242F2C9E67E2006ECA39 /* AddCourseView.swift */,
 				57DCBA932C9E9623000E7092 /* AddSemesterView.swift */,
-				579D247E2C9E6DEA0082C752 /* LandingView.swift */,
 				340C2D152C9E9FAD009556E8 /* EditCourseView.swift */,
 				579D247E2C9E6DEA0082C752 /* LandingView.swift */,
 			);
@@ -224,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				579D247F2C9E6DEA0082C752 /* LandingView.swift in Sources */,
+				57DCBA9B2C9EC2B3000E7092 /* MainView.swift in Sources */,
 				313947D12C9D618A0050D95E /* ContentView.swift in Sources */,
 				31806D642C9D64E000E487EE /* CourseSummaryCardView.swift in Sources */,
 				3166BFB42C9E69E300565FF5 /* CourseView.swift in Sources */,
@@ -376,6 +379,7 @@
 				DEVELOPMENT_TEAM = 64JFAVR2B4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -405,6 +409,7 @@
 				DEVELOPMENT_TEAM = 64JFAVR2B4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

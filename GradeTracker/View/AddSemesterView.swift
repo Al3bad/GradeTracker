@@ -50,10 +50,6 @@ struct AddSemesterView: View {
         do {
             let config = ModelConfiguration(isStoredInMemoryOnly: true)
             let container = try ModelContainer(for: Semester.self, configurations: config)
-            let example = Semester(
-                id: UUID(),
-                title: "2024-S1"
-                )
             return AddSemesterView()
                 .modelContainer(container)
         } catch {

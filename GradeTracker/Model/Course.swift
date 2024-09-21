@@ -15,11 +15,13 @@ class Course: Identifiable {
     var credits: Int
     var goal: Double? // Optional to set the goal
     @Relationship(deleteRule: .cascade) var assignments = [Assignment]()
+    @Relationship var semester: Semester? // Reference to the semester this course belongs to
 
-    init(id: UUID = UUID(), title: String = "", credits: Int = 0, goal: Double? = nil) {
+    init(id: UUID = UUID(), title: String = "", credits: Int = 0, goal: Double? = nil, semester: Semester? = nil) {
         self.id = id
         self.title = title
         self.credits = credits
         self.goal = goal
+        self.semester = semester // Assign the semester in the initializer
     }
 }
