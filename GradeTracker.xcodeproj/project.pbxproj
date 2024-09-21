@@ -16,6 +16,7 @@
 		31806D642C9D64E000E487EE /* CourseSummaryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31806D632C9D64E000E487EE /* CourseSummaryCardView.swift */; };
 		31806D672C9D955200E487EE /* Double.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31806D662C9D955200E487EE /* Double.extension.swift */; };
 		31BF4AB72C9D9A8300D1E40B /* ProgressDonutChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF4AB62C9D9A8300D1E40B /* ProgressDonutChart.swift */; };
+		340C2D162C9E9FAD009556E8 /* EditCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340C2D152C9E9FAD009556E8 /* EditCourseView.swift */; };
 		346FBD952C9D650E00D3574E /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346FBD942C9D650E00D3574E /* RowView.swift */; };
 		346FBD972C9D975100D3574E /* CoursesListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346FBD962C9D975100D3574E /* CoursesListingView.swift */; };
 		348024302C9E67E2006ECA39 /* AddCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3480242F2C9E67E2006ECA39 /* AddCourseView.swift */; };
@@ -38,6 +39,7 @@
 		31806D632C9D64E000E487EE /* CourseSummaryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSummaryCardView.swift; sourceTree = "<group>"; };
 		31806D662C9D955200E487EE /* Double.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.extension.swift; sourceTree = "<group>"; };
 		31BF4AB62C9D9A8300D1E40B /* ProgressDonutChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDonutChart.swift; sourceTree = "<group>"; };
+		340C2D152C9E9FAD009556E8 /* EditCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCourseView.swift; sourceTree = "<group>"; };
 		346FBD942C9D650E00D3574E /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		346FBD962C9D975100D3574E /* CoursesListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesListingView.swift; sourceTree = "<group>"; };
 		3480242F2C9E67E2006ECA39 /* AddCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,8 @@
 				57DCBA972C9E9704000E7092 /* SemesterPickingView2.swift */,
 				3480242F2C9E67E2006ECA39 /* AddCourseView.swift */,
 				57DCBA932C9E9623000E7092 /* AddSemesterView.swift */,
+				579D247E2C9E6DEA0082C752 /* LandingView.swift */,
+				340C2D152C9E9FAD009556E8 /* EditCourseView.swift */,
 				579D247E2C9E6DEA0082C752 /* LandingView.swift */,
 			);
 			path = View;
@@ -235,6 +239,7 @@
 				313947CF2C9D618A0050D95E /* GradeTrackerApp.swift in Sources */,
 				31BF4AB72C9D9A8300D1E40B /* ProgressDonutChart.swift in Sources */,
 				31806D672C9D955200E487EE /* Double.extension.swift in Sources */,
+				340C2D162C9E9FAD009556E8 /* EditCourseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

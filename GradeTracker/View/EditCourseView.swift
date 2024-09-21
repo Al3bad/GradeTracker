@@ -1,5 +1,5 @@
 //
-//  AddCourse.swift
+//  EditCourseView.swift
 //  GradeTracker
 //
 //  Created by Mao Mingjian on 21/9/2024.
@@ -8,15 +8,13 @@
 import SwiftUI
 import SwiftData
 
-struct AddCourseView: View {
+
+struct EditCourseView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
-    @State private var course: Course = Course()
-    @State private var newAssignment = ""
-    
-    @Binding var selectedSemester: Semester?
-    
+    @Bindable var course: Course
+
     var body: some View {
         NavigationStack{
             Form{
@@ -31,29 +29,22 @@ struct AddCourseView: View {
                     
                     LabeledContent("Goal"){
                         TextField("Goal", value: $course.goal, format: .number)
-                    }   
+                    }
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("New Course")
+            .navigationTitle("Edit Course")
             .toolbar{
-                ToolbarItem(placement: .cancellationAction) {
+                ToolbarItem(placement: .primaryAction) {
                     Button("Cancel") {
                         dismiss()
                     }.foregroundColor(.red)
                 }
-                ToolbarItem(placement: .primaryAction) {
-                    Button("Add", action: AddCourse)
-                }
             }
         }
     }
-    
-    func AddCourse(){
-        if selectedSemester != nil {
-            selectedSemester?.courses.append(course)
-        }
-        dismiss()
+    func SaveChanges(){
+        
     }
 }
 
@@ -61,9 +52,14 @@ struct AddCourseView: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Course.self, configurations: config)
-        return AddCourseView(selectedSemester: .constant(nil))
+        let example = Course(
+            id: UUID(),
+            title: "iPhone Software Engineering",
+            credits: 12,
+            goal: 80.0
+            )
+        return EditCourseView(course: example)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")
-    }
-}
+    }}

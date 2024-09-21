@@ -13,6 +13,7 @@ struct NewAssignmentSheetView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var newAssignment = Assignment()
+    var course: Course
     
     var body: some View {
         Form {
@@ -41,7 +42,7 @@ struct NewAssignmentSheetView: View {
             
             Section {
                 Button("Create") {
-                    modelContext.insert(newAssignment)
+                    course.assignments.append(newAssignment)
                     dismiss()
                 }
             }

@@ -9,12 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct CoursesListingView: View {
-    @Environment(\.modelContext) var modelContext
-    
-    @State private var showingSheet = false
-    
-//    var selectedSemester: Semester?
-    @Binding var semester: Semester?
+    @Query var courses: [Course]
     
     var body: some View {
         
@@ -35,7 +30,14 @@ struct CoursesListingView: View {
                         }
                     }
                 }
+            } label: {
+                let totalMark = course.assignments.reduce(0) { $0 + ($1.mark ?? 0) }
+                let totalWeight = course.assignments.reduce(0) { $0 + $1.weight }
+                let totalWeight2 = totalWeight < 100 ? 100 : totalWeight
+
+                RowView(item: course.title, rightView: ProgressDonutChart(current: totalMark, total: totalWeight2))
             }
+            
         }
         .sheet(isPresented: $showingSheet) {
             AddCourseView(selectedSemester: $semester)

@@ -8,8 +8,9 @@
 import SwiftUI
 import SwiftData
 
-struct RowView: View {
+struct RowView<Content: View>: View {
     var item: String
+    var rightView: Content
     
     var body: some View {
         HStack{
@@ -23,7 +24,9 @@ struct RowView: View {
                     .font(.footnote)
                     .foregroundStyle(.secondary)
                 
-                Text("Card")
+                rightView
+                    .frame(maxWidth: 40)
+                
             }
         }
         .padding()
@@ -41,7 +44,7 @@ struct RowView: View {
             credits: 12,
             goal: 80.0
             )
-        return RowView(item: example.title)
+        return RowView(item: example.title, rightView: ProgressDonutChart(current: 30, total: 100))
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

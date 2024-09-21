@@ -10,15 +10,14 @@ import SwiftData
 
 struct CourseSummaryCardView: View {
     
-//    @Environment(\.modelContext) private var modelContext
-    
-    var goal: Double
+    var goal: Double?
     var assignments: [Assignment]
     
     var body: some View {
         let totalMark = assignments.reduce(0) { $0 + ($1.mark ?? 0) }
         let totalWeight = assignments.reduce(0) { $0 + $1.weight }
-        let remaining = goal - totalMark
+        let totalWeight2 = totalWeight < 100 ? 100 : totalWeight
+        let remaining = goal ?? 0 - totalMark
         
         VStack {
             HStack {
@@ -29,20 +28,22 @@ struct CourseSummaryCardView: View {
                         HStack {
                             Text("\(totalMark.truncated)%")
                             Text("/")
-                            Text("\(totalWeight.truncated)%")
+                            Text("\(totalWeight2.truncated)%")
                         }
                     }
-                    VStack(alignment: .leading) {
-                        Text("Target")
-                            .bold()
-                        HStack {
-                            Text("\(goal.truncated)%")
+                    if goal != nil {
+                        VStack(alignment: .leading) {
+                            Text("Target")
+                                .bold()
+                            HStack {
+                                Text("\(goal!.truncated)%")
+                            }
                         }
                     }
                 }
                 Spacer()
                 if assignments.count > 0 {
-                    ProgressDonutChart(current: totalMark, total: totalWeight, mark: goal)
+                    ProgressDonutChart(current: totalMark, total: totalWeight2, mark: goal)
                         .frame(maxWidth: 164)
                 } else {
                     ProgressDonutChart(current: 0, total: 100, mark: goal)
@@ -75,35 +76,16 @@ struct CourseSummaryCardView: View {
 
 }
 
-//#Preview {
-//    // Create sample assignments
-//    let assignment1 = Assignment(title: "Assignment 1", weight: 50, mark: 30.31)
-//    let assignment2 = Assignment(title: "Assignment 2", weight: 50, mark: 30)
-//
-//    // Set up the model container for the preview
-//    return CourseSummaryCardView(goal: 80, assignments: [assignment1, assignment2])
-//        .modelContainer(for: [Assignment.self], inMemory: true) // Use in-memory storage
-//}
-//
-//#Preview {
-//    // Create sample assignments
-//    let assignment1 = Assignment(title: "Assignment 1", weight: 50, mark: 60.31)
-//    let assignment2 = Assignment(title: "Assignment 2", weight: 50, mark: 30)
-//
-//    // Set up the model container for the preview
-//    return CourseSummaryCardView(goal: 80, assignments: [assignment1, assignment2])
-//        .modelContainer(for: [Assignment.self], inMemory: true) // Use in-memory storage
-//}
+#Preview {
+    CourseSummaryCardView(goal: 80, assignments: [
+        .init(title: "Assignment 1", weight: 50, mark: 30.31),
+        .init(title: "Assignment 2", weight: 50, mark: 30)
+    ])
+}
 
 #Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: Assignment.self, configurations: config)
-        let assignment1 = Assignment(title: "Assignment 1", weight: 50, mark: 50)
-        let assignment2 = Assignment(title: "Assignment 2", weight: 50, mark: 30)
-        return CourseSummaryCardView(goal: 80, assignments: [assignment1, assignment2])
-            .modelContainer(container)
-    } catch {
-        fatalError("Failed to create model container.")
-    }
+    CourseSummaryCardView(goal: 80, assignments: [
+        .init(title: "Assignment 1", weight: 50, mark: 60.31),
+        .init(title: "Assignment 2", weight: 50, mark: 30)
+    ])
 }

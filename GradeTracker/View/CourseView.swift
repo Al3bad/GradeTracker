@@ -9,15 +9,14 @@ import SwiftUI
 import SwiftData
 
 struct CourseView: View {
-    
-    @Query var assignments: [Assignment]
-    
+
     @State private var showingSheet = false
+    var course: Course
     
     var body: some View {
         List {
             Section {
-                CourseSummaryCardView(goal: 50, assignments: assignments)
+                CourseSummaryCardView(goal: course.goal, assignments: course.assignments)
             }
             
             Section(header: HStack {
@@ -28,7 +27,7 @@ struct CourseView: View {
                 }
                 .padding(.bottom, 5)
             }) {
-                ForEach(assignments) { assignment in
+                ForEach(course.assignments) { assignment in
                     HStack {
                         Text(assignment.title)
                         Spacer()
@@ -49,7 +48,7 @@ struct CourseView: View {
             }
         }
         .sheet(isPresented: $showingSheet) {
-            NewAssignmentSheetView()
+            NewAssignmentSheetView(course: course)
                 .presentationDetents([.medium])
                 .presentationDragIndicator(.visible)
         }
@@ -57,22 +56,28 @@ struct CourseView: View {
 }
 
 #Preview {
-    NavigationStack {
-        CourseView()
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: Course.self, configurations: config)
+        return NavigationStack {
+            CourseView(course: Course(
+                id: UUID(),
+                title: "iPhone Software Engineering",
+                credits: 12,
+                goal: 80.0
+            ))
             .toolbar {
-                ToolbarItem(placement: .navigation) {
-                    Text("Course Info")
-                        .font(.title)
-                        .bold()
-                }
                 ToolbarItem(placement: .primaryAction) {
                     NavigationLink {
-                        Text("Edit Course Info Screen")
+                        Text("edit")
                     } label: {
                         Image(systemName: "square.and.pencil")
                     }
                 }
             }
+        }
+        .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container.")
     }
-    .modelContainer(for: [Assignment.self])
 }
