@@ -14,6 +14,9 @@
 		31806D642C9D64E000E487EE /* CourseSummaryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31806D632C9D64E000E487EE /* CourseSummaryCardView.swift */; };
 		31806D672C9D955200E487EE /* Double.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31806D662C9D955200E487EE /* Double.extension.swift */; };
 		31BF4AB72C9D9A8300D1E40B /* ProgressDonutChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF4AB62C9D9A8300D1E40B /* ProgressDonutChart.swift */; };
+		575AE08B2C9D9960002F9098 /* SemesterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575AE08A2C9D9960002F9098 /* SemesterItem.swift */; };
+		575AE08D2C9D99CE002F9098 /* CourseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575AE08C2C9D99CE002F9098 /* CourseItem.swift */; };
+		575AE08F2C9D99F5002F9098 /* AssignmentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575AE08E2C9D99F5002F9098 /* AssignmentItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		31806D632C9D64E000E487EE /* CourseSummaryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSummaryCardView.swift; sourceTree = "<group>"; };
 		31806D662C9D955200E487EE /* Double.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.extension.swift; sourceTree = "<group>"; };
 		31BF4AB62C9D9A8300D1E40B /* ProgressDonutChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDonutChart.swift; sourceTree = "<group>"; };
+		575AE08A2C9D9960002F9098 /* SemesterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemesterItem.swift; sourceTree = "<group>"; };
+		575AE08C2C9D99CE002F9098 /* CourseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseItem.swift; sourceTree = "<group>"; };
+		575AE08E2C9D99F5002F9098 /* AssignmentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,9 @@
 		313947DD2C9D61A60050D95E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				575AE08A2C9D9960002F9098 /* SemesterItem.swift */,
+				575AE08E2C9D99F5002F9098 /* AssignmentItem.swift */,
+				575AE08C2C9D99CE002F9098 /* CourseItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +197,9 @@
 			files = (
 				313947D12C9D618A0050D95E /* ContentView.swift in Sources */,
 				31806D642C9D64E000E487EE /* CourseSummaryCardView.swift in Sources */,
+				575AE08D2C9D99CE002F9098 /* CourseItem.swift in Sources */,
+				575AE08B2C9D9960002F9098 /* SemesterItem.swift in Sources */,
+				575AE08F2C9D99F5002F9098 /* AssignmentItem.swift in Sources */,
 				313947CF2C9D618A0050D95E /* GradeTrackerApp.swift in Sources */,
 				31BF4AB72C9D9A8300D1E40B /* ProgressDonutChart.swift in Sources */,
 				31806D672C9D955200E487EE /* Double.extension.swift in Sources */,
