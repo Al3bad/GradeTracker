@@ -14,26 +14,26 @@ struct CoursesListingView: View {
     @Binding var semester: Semester?
     
     var body: some View {
-        
-        Section(header: HStack {
-            Text("Courses")
-            Spacer()
-            Button("", systemImage: "plus") {
-                showingSheet.toggle()
-                
-            }
-            .padding(.bottom, 5)
-        }) {
-            List (semester?.courses ?? []) { course in
-                NavigationLink {
-                    NavigationStack{
-                        CourseView(course: course)
-                            .toolbar {
-                                ToolbarItem(placement: .primaryAction) {
-                                    NavigationLink {
-                                        EditCourseView(course: course)
-                                    } label: {
-                                        Image(systemName: "square.and.pencil")
+        Form{
+            Section(header: HStack {
+                Text("Courses")
+                Spacer()
+                Button("", systemImage: "plus") {
+                    showingSheet.toggle()
+                }
+                .padding(.bottom, 5)
+            }) {
+                List (semester?.courses ?? []) { course in
+                    NavigationLink {
+                        NavigationStack{
+                            CourseView(course: course)
+                                .toolbar {
+                                    ToolbarItem(placement: .primaryAction) {
+                                        NavigationLink {
+                                            EditCourseView(course: course)
+                                        } label: {
+                                            Image(systemName: "square.and.pencil")
+                                        }
                                     }
                                 }
                             }
