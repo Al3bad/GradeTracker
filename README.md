@@ -73,7 +73,7 @@ The project is structured with a modular approach, using three key models:
     - icon
     - Logo
  
-##UI UX
+## UI UX
 
 - The UI has been implemented in a clean and easy way for student to use it, also created a simple but meaningful icon representing a target tracking process. Grade Tracker is implemented in the logo to make it recognizable.
 - Colour scheme has been blue, the safe, comfortable feeling to clam student through their academic journey.
