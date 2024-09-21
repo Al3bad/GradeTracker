@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CourseSummaryCardView: View {
     
@@ -38,8 +39,13 @@ struct CourseSummaryCardView: View {
                     }
                 }
                 Spacer()
-                ProgressDonutChart(current: totalMark, total: totalWeight, mark: goal)
-                    .frame(maxWidth: 164)
+                if assignments.count > 0 {
+                    ProgressDonutChart(current: totalMark, total: totalWeight, mark: goal)
+                        .frame(maxWidth: 164)
+                } else {
+                    ProgressDonutChart(current: 0, total: 100, mark: goal)
+                        .frame(maxWidth: 164)
+                }
             }
             if remaining > 0 {
                 Text("\(remaining.truncated)% marks remainting to reach your target")
