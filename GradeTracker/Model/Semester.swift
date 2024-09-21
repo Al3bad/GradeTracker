@@ -1,4 +1,3 @@
-
 //
 //  Semester.swift
 //  GradeTracker
