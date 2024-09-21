@@ -9,8 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) var modelContext
-    
     var body: some View {
         NavigationStack{
             CoursesListingView()
@@ -32,7 +30,7 @@ struct ContentView: View {
 #Preview {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: false)
-        let container = try ModelContainer(for: Course.self, Assignment.self, configurations: config)
+        let container = try ModelContainer(for: Course.self, configurations: config)
         return ContentView()
             .modelContainer(container)
     } catch {

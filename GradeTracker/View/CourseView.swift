@@ -16,7 +16,7 @@ struct CourseView: View {
     var body: some View {
         List {
             Section {
-                CourseSummaryCardView(goal: 50, assignments: course.assignments)
+                CourseSummaryCardView(goal: course.goal, assignments: course.assignments)
             }
             
             Section(header: HStack {
@@ -59,13 +59,7 @@ struct CourseView: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Course.self, configurations: config)
-        let example = Course(
-            id: UUID(),
-            title: "iPhone Software Engineering",
-            credits: 12,
-            goal: 80.0
-        )
-        return     NavigationStack {
+        return NavigationStack {
             CourseView(course: Course(
                 id: UUID(),
                 title: "iPhone Software Engineering",
