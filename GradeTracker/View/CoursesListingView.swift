@@ -15,42 +15,40 @@ struct CoursesListingView: View {
     
     var body: some View {
         
-        Form{
-            Section(header: HStack {
-                Text("Courses")
-                Spacer()
-                Button("", systemImage: "plus") {
-                    showingSheet.toggle()
-                    
-                }
-                .padding(.bottom, 5)
-            }) {
-                List (semester?.courses ?? []) { course in
-                    NavigationLink {
-                        NavigationStack{
-                            CourseView(course: course)
-                                .toolbar {
-                                    ToolbarItem(placement: .primaryAction) {
-                                        NavigationLink {
-                                            EditCourseView(course: course)
-                                        } label: {
-                                            Image(systemName: "square.and.pencil")
-                                        }
+        Section(header: HStack {
+            Text("Courses")
+            Spacer()
+            Button("", systemImage: "plus") {
+                showingSheet.toggle()
+                
+            }
+            .padding(.bottom, 5)
+        }) {
+            List (semester?.courses ?? []) { course in
+                NavigationLink {
+                    NavigationStack{
+                        CourseView(course: course)
+                            .toolbar {
+                                ToolbarItem(placement: .primaryAction) {
+                                    NavigationLink {
+                                        EditCourseView(course: course)
+                                    } label: {
+                                        Image(systemName: "square.and.pencil")
                                     }
                                 }
-                                .navigationTitle(course.title)
-                        }
-                    } label: {
-                        let totalMark = course.assignments.reduce(0) { $0 + ($1.mark ?? 0) }
-                        let totalWeight = course.assignments.reduce(0) { $0 + $1.weight }
-                        let totalWeight2 = totalWeight < 100 ? 100 : totalWeight
-
-                        RowView(item: course.title, rightView: ProgressDonutChart(current: totalMark, total: totalWeight2))
+                            }
+                            .navigationTitle(course.title)
                     }
+                } label: {
+                    let totalMark = course.assignments.reduce(0) { $0 + ($1.mark ?? 0) }
+                    let totalWeight = course.assignments.reduce(0) { $0 + $1.weight }
+                    let totalWeight2 = totalWeight < 100 ? 100 : totalWeight
+                    
+                    RowView(item: course.title, rightView: ProgressDonutChart(current: totalMark, total: totalWeight2))
                 }
             }
-            
         }
+        
         .sheet(isPresented: $showingSheet) {
             AddCourseView(selectedSemester: $semester)
                 .presentationDetents([.medium])
