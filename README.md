@@ -4,6 +4,9 @@
 
 # App: Grade Tracker iOS App
 
+![180](https://github.com/user-attachments/assets/347c1f7a-ad4f-45b9-8ae6-2b74dee868a5)
+
+
 ## Overview
 
 Grade Tracker is an iOS app designed to help students effortlessly track their academic performance. The app allows students to manage their semesters, courses, and assignments, providing real-time insights into their progress towards achieving specific grade goals for each course.
