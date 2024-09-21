@@ -1,4 +1,8 @@
-#  Grade Tracker iOS App
+# Building80Coders
+# 
+# SwiftUI iphone app created by Abdullah Allabad, Mia Mao, Sam Kin Lok Chan
+
+# App: Grade Tracker iOS App
 
 ## Overview
 
@@ -41,6 +45,31 @@ The project is structured with a modular approach, using three key models:
     - Marks: The marks received for that specific assignment.
 - The app calculates and tracks the total weight and marks achieved so far for each course.
 
+# Structure:
+- Model
+    - Semester( id, title, startDate, isComplete)
+    - Course( id, title, credits, goal)
+    - Assignment( id, title, weight, startDate, mark)
+- View
+    - Component
+        - CourseSummaryCardView - Show brief course summary and of assignments
+        - ProgressDonutChart - Display progress as in a donut chart
+        - NewAssignmentSheetView - To Create a new assignment
+        - RowView - Display the courses summary 
+    - ContentView - Load the landing view and display the mainView
+    - MainView - Semester creation and picking
+    - CourseView - Container to hold course summary and add assignment function
+    - CourseListingView - List to show all courses
+    - SemesterPickingView2 - Semester picker function
+    - AddCourseView - To add new course
+    - AddSemesterView - To add new semester
+    - EditCourseView - Editing course information
+    - EditAssignmentView - Editing assignment information: grades, etc.
+    - LandingView - To show the logo before the mainview
+- Assets
+    - icon
+    - Logo
+      
 ## Flow:
 - Semester → contains multiple Courses.
 - Course → contains multiple Assignments.
