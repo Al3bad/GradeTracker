@@ -17,15 +17,9 @@ struct CoursesListingView: View {
                 NavigationStack{
                     CourseView(course: course)
                         .toolbar {
-//                            ToolbarItem(placement: .automatic) {
-//                                Text(course.title)
-//                                    .font(.title)
-//                                    .bold()
-//                            }
                             ToolbarItem(placement: .primaryAction) {
                                 NavigationLink {
                                     EditCourseView(course: course)
-//                                    Text("edit")
                                 } label: {
                                     Image(systemName: "square.and.pencil")
                                 }
