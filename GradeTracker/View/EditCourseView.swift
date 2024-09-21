@@ -21,14 +21,17 @@ struct EditCourseView: View {
                 Section(header: Text("Course Details")){
                     LabeledContent("Title"){
                         TextField("title", text: $course.title)
+                            .multilineTextAlignment(.trailing)
                     }
                     
                     LabeledContent("Credits"){
                         TextField("Credits", value: $course.credits, format: .number)
+                            .multilineTextAlignment(.trailing)
                     }
                     
                     LabeledContent("Goal"){
                         TextField("Goal", value: $course.goal, format: .number)
+                            .multilineTextAlignment(.trailing)
                     }
                 }
             }
@@ -57,9 +60,10 @@ struct EditCourseView: View {
             title: "iPhone Software Engineering",
             credits: 12,
             goal: 80.0
-            )
+        )
         return EditCourseView(course: example)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")
-    }}
+    }
+}
