@@ -14,6 +14,8 @@
 		575AE08B2C9D9960002F9098 /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575AE08A2C9D9960002F9098 /* Semester.swift */; };
 		575AE08D2C9D99CE002F9098 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575AE08C2C9D99CE002F9098 /* Course.swift */; };
 		575AE08F2C9D99F5002F9098 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575AE08E2C9D99F5002F9098 /* Assignment.swift */; };
+		346FBD952C9D650E00D3574E /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346FBD942C9D650E00D3574E /* RowView.swift */; };
+		346FBD972C9D975100D3574E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346FBD962C9D975100D3574E /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		575AE08A2C9D9960002F9098 /* Semester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
 		575AE08C2C9D99CE002F9098 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		575AE08E2C9D99F5002F9098 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
+		346FBD942C9D650E00D3574E /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
+		346FBD962C9D975100D3574E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				313947D02C9D618A0050D95E /* ContentView.swift */,
+				346FBD942C9D650E00D3574E /* RowView.swift */,
+				346FBD962C9D975100D3574E /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,6 +180,8 @@
 				575AE08D2C9D99CE002F9098 /* Course.swift in Sources */,
 				575AE08B2C9D9960002F9098 /* Semester.swift in Sources */,
 				575AE08F2C9D99F5002F9098 /* Assignment.swift in Sources */,
+				346FBD972C9D975100D3574E /* HomeView.swift in Sources */,
+				346FBD952C9D650E00D3574E /* RowView.swift in Sources */,
 				313947CF2C9D618A0050D95E /* GradeTrackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
