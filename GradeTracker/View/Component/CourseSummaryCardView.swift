@@ -17,7 +17,7 @@ struct CourseSummaryCardView: View {
         let totalMark = assignments.reduce(0) { $0 + ($1.mark ?? 0) }
         let totalWeight = assignments.reduce(0) { $0 + $1.weight }
         let totalWeight2 = totalWeight < 100 ? 100 : totalWeight
-        let remaining = goal ?? 0 - totalMark
+        let remaining = (goal ?? 0) - totalMark
         
         VStack {
             HStack {
