@@ -7,19 +7,13 @@
 
 import SwiftUI
 
-struct Assignment {
-    var title: String
-    var weight: Double
-    var mark: Double
-}
-
 struct CourseSummaryCardView: View {
     
     var goal: Double
     var assignments: [Assignment]
     
     var body: some View {
-        let totalMark = assignments.reduce(0) { $0 + $1.mark }
+        let totalMark = assignments.reduce(0) { $0 + ($1.mark ?? 0) }
         let totalWeight = assignments.reduce(0) { $0 + $1.weight }
         let remaining = goal - totalMark
         
