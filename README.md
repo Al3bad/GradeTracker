@@ -48,7 +48,7 @@ The project is structured with a modular approach, using three key models:
     - Marks: The marks received for that specific assignment.
 - The app calculates and tracks the total weight and marks achieved so far for each course.
 
-# Structure:
+## Structure:
 - Model
     - Semester( id, title, startDate, isComplete)
     - Course( id, title, credits, goal)
@@ -72,6 +72,14 @@ The project is structured with a modular approach, using three key models:
 - Assets
     - icon
     - Logo
+ 
+##UI UX
+
+- The UI has been implemented in a clean and easy way for student to use it, also created a simple but meaningful icon representing a target tracking process. Grade Tracker is implemented in the logo to make it recognizable.
+- Colour scheme has been blue, the safe, comfortable feeling to clam student through their academic journey.
+- San Franciso was used as its clear and readable for everyone and it is ios inbuilt that people can easily get familiar with this font.
+- The UX has been modified and implemented in a way that user should be easily managed, the plus button to add new thing, the picker to choose semester, the swiping to edit assignments, and the customized donut chart to represent the progress, they are well developed in a way for student to easily pick up.
+- There are instructions or prompts to help user understand the use of this app. 
       
 ## Flow:
 - Semester → contains multiple Courses.
