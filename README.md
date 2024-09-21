@@ -24,6 +24,10 @@ With this app, students can:
 - Assignment Tracking: For each course, students can track assignments by adding assignment details, such as weight and marks received.
 - Progress Monitoring: The app automatically calculates how much students need to achieve in future assignments to meet their course goals.
 
+> [!Note]
+> When user add a new semester, they have to select the semester explicitly from the drop down menu before adding a new course.
+> When user edits the course details, it will be updated in realtime and there is not any confirm button. User can click outside of the sheet or pull down the sheet to go back.
+
 ## App Structure and Code Modulation
 
 The project is structured with a modular approach, using three key models:
