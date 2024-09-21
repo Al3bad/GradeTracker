@@ -6,19 +6,30 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    @Environment(\.modelContext) var modelContext
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Test")
+        NavigationStack{
+            CoursesListingView()
+                .navigationTitle("Courses")
+                .toolbar{
+                    ToolbarItem(placement: .primaryAction){
+                        NavigationLink {
+                            AddCourseView()
+                                .navigationBarBackButtonHidden(true)
+                            } label: {
+                                Image(systemName: "plus")
+                            }
+                        }
+                    }
+                }
         }
-        .padding()
-    }
 }
 
 #Preview {
     ContentView()
+        .modelContainer(for: Course.self)
 }
