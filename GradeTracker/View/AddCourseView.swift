@@ -57,12 +57,6 @@ struct AddCourseView: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Course.self, configurations: config)
-        let example = Course(
-            id: UUID(),
-            title: "iPhone Software Engineering",
-            credits: 12,
-            goal: 80.0
-            )
         return AddCourseView()
             .modelContainer(container)
     } catch {
