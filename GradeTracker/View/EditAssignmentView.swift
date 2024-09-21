@@ -1,5 +1,5 @@
 //
-//  EditCourseView.swift
+//  EditAssignmentView.swift
 //  GradeTracker
 //
 //  Created by Mao Mingjian on 21/9/2024.
@@ -8,35 +8,39 @@
 import SwiftUI
 import SwiftData
 
+struct EditAssignmentView: View {
+    @Bindable var assignment: Assignment
 
-struct EditCourseView: View {
     @Environment(\.dismiss) var dismiss
-    @Environment(\.modelContext) var modelContext
     
-    @Bindable var course: Course
-
     var body: some View {
         NavigationStack{
             Form{
-                Section(header: Text("Course Details")){
+                Section(header: Text("Assignment Details")){
                     LabeledContent("Title"){
-                        TextField("title", text: $course.title)
+                        TextField("title", text: $assignment.title)
                             .multilineTextAlignment(.trailing)
                     }
                     
-                    LabeledContent("Credits"){
-                        TextField("Credits", value: $course.credits, format: .number)
+                    LabeledContent("Weight"){
+                        TextField("Weight", value: $assignment.weight, format: .number)
                             .multilineTextAlignment(.trailing)
                     }
                     
-                    LabeledContent("Goal"){
-                        TextField("Goal", value: $course.goal, format: .number)
+                    LabeledContent("Mark"){
+                        TextField("Mark", value: $assignment.mark, format: .number)
                             .multilineTextAlignment(.trailing)
                     }
+                    
+                    DatePicker(
+                        "Start Date",
+                        selection: $assignment.startDate,
+                        displayedComponents: [.date]
+                    )
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Edit Course")
+            .navigationTitle("Edit Assignment")
             .toolbar{
                 ToolbarItem(placement: .primaryAction) {
                     Button("Cancel") {
@@ -46,24 +50,22 @@ struct EditCourseView: View {
             }
         }
     }
-    func SaveChanges(){
-        
-    }
 }
 
 #Preview {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Course.self, configurations: config)
-        let example = Course(
+        let example = Assignment(
             id: UUID(),
-            title: "iPhone Software Engineering",
-            credits: 12,
-            goal: 80.0
+            title: "Assignment 1",
+            weight: 20,
+            mark: 12
         )
-        return EditCourseView(course: example)
+        return EditAssignmentView(assignment: example)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")
     }
+
 }

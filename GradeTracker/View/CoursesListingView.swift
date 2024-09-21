@@ -14,14 +14,12 @@ struct CoursesListingView: View {
     @Binding var semester: Semester?
     
     var body: some View {
-        
         Form{
             Section(header: HStack {
                 Text("Courses")
                 Spacer()
                 Button("", systemImage: "plus") {
                     showingSheet.toggle()
-                    
                 }
                 .padding(.bottom, 5)
             }) {
