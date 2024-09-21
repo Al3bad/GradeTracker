@@ -9,47 +9,26 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    
-    @Environment(\.modelContext) var modelContext
-    @State private var selectedSemester: Semester?
-    @State private var showingSheet = false
+    @State private var showLandingView = true
     
     var body: some View {
-        VStack{
-            
-            NavigationStack {
-                HStack{
-                    SemesterPickingView(selectedSemester: $selectedSemester)
-                        .toolbar {
-                            ToolbarItem(placement: .navigation) {
-                                Text("Semester Info")
-                                    .font(.title)
-                                    .bold()
-                            }
-                            ToolbarItem(placement: .primaryAction) {
-                                NavigationLink {
-                                    AddSemesterView()
-                                } label: {
-                                    Image(systemName: "plus")
-                                }
-                            }
-                        }
-                }
-                if (selectedSemester != nil) {
-                    CoursesListingView(semester: $selectedSemester)
-                }
-                
-                
+        ZStack {
+            if showLandingView {
+                LandingView()
+            } else {
+                MainView()
             }
-            .sheet(isPresented: $showingSheet) {
-                AddCourseView(selectedSemester: $selectedSemester)
-                    .presentationDetents([.medium])
-                    .presentationDragIndicator(.visible)
+        }
+        .onAppear {
+            // Set up a delay before switching views
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    showLandingView = false
+                }
             }
         }
     }
 }
-
 
 #Preview {
     do {
@@ -61,5 +40,6 @@ struct ContentView: View {
     } catch {
         fatalError("Failed to create model container: \(error)")
     }
-
+    
 }
+
