@@ -67,14 +67,9 @@ struct CourseView: View {
                 goal: 80.0
             ))
             .toolbar {
-                ToolbarItem(placement: .navigation) {
-                    Text("Course Info")
-                        .font(.title)
-                        .bold()
-                }
                 ToolbarItem(placement: .primaryAction) {
                     NavigationLink {
-                        Text("Edit Course Info Screen")
+                        Text("edit")
                     } label: {
                         Image(systemName: "square.and.pencil")
                     }

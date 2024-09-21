@@ -14,7 +14,24 @@ struct CoursesListingView: View {
     var body: some View {
         List (courses){ course in
             NavigationLink {
-                CourseView(course: course)
+                NavigationStack{
+                    CourseView(course: course)
+                        .toolbar {
+//                            ToolbarItem(placement: .navigation) {
+//                                Text("Course Info")
+//                                    .font(.title)
+//                                    .bold()
+//                            }
+                            ToolbarItem(placement: .primaryAction) {
+                                NavigationLink {
+                                    EditCourseView(course: course)
+//                                    Text("edit")
+                                } label: {
+                                    Image(systemName: "square.and.pencil")
+                                }
+                            }
+                        }
+                }
             } label: {
                 let totalMark = course.assignments.reduce(0) { $0 + ($1.mark ?? 0) }
                 let totalWeight = course.assignments.reduce(0) { $0 + $1.weight }
@@ -22,7 +39,9 @@ struct CoursesListingView: View {
 
                 RowView(item: course.title, rightView: ProgressDonutChart(current: totalMark, total: totalWeight2))
             }
+            
         }
+        
     }
     
 }
