@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CourseSummaryCardView: View {
+    
+//    @Environment(\.modelContext) private var modelContext
     
     var goal: Double
     var assignments: [Assignment]
@@ -67,16 +70,35 @@ struct CourseSummaryCardView: View {
 
 }
 
-#Preview {
-    CourseSummaryCardView(goal: 80, assignments: [
-        .init(title: "Assignment 1", weight: 50, mark: 30.31),
-        .init(title: "Assignment 2", weight: 50, mark: 30)
-    ])
-}
+//#Preview {
+//    // Create sample assignments
+//    let assignment1 = Assignment(title: "Assignment 1", weight: 50, mark: 30.31)
+//    let assignment2 = Assignment(title: "Assignment 2", weight: 50, mark: 30)
+//
+//    // Set up the model container for the preview
+//    return CourseSummaryCardView(goal: 80, assignments: [assignment1, assignment2])
+//        .modelContainer(for: [Assignment.self], inMemory: true) // Use in-memory storage
+//}
+//
+//#Preview {
+//    // Create sample assignments
+//    let assignment1 = Assignment(title: "Assignment 1", weight: 50, mark: 60.31)
+//    let assignment2 = Assignment(title: "Assignment 2", weight: 50, mark: 30)
+//
+//    // Set up the model container for the preview
+//    return CourseSummaryCardView(goal: 80, assignments: [assignment1, assignment2])
+//        .modelContainer(for: [Assignment.self], inMemory: true) // Use in-memory storage
+//}
 
 #Preview {
-    CourseSummaryCardView(goal: 80, assignments: [
-        .init(title: "Assignment 1", weight: 50, mark: 60.31),
-        .init(title: "Assignment 2", weight: 50, mark: 30)
-    ])
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: Assignment.self, configurations: config)
+        let assignment1 = Assignment(title: "Assignment 1", weight: 50, mark: 50)
+        let assignment2 = Assignment(title: "Assignment 2", weight: 50, mark: 30)
+        return CourseSummaryCardView(goal: 80, assignments: [assignment1, assignment2])
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container.")
+    }
 }
