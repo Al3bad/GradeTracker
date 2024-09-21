@@ -17,8 +17,8 @@ struct CoursesListingView: View {
                 NavigationStack{
                     CourseView(course: course)
                         .toolbar {
-//                            ToolbarItem(placement: .navigation) {
-//                                Text("Course Info")
+//                            ToolbarItem(placement: .automatic) {
+//                                Text(course.title)
 //                                    .font(.title)
 //                                    .bold()
 //                            }
@@ -30,7 +30,9 @@ struct CoursesListingView: View {
                                     Image(systemName: "square.and.pencil")
                                 }
                             }
+                    
                         }
+                        .navigationTitle(course.title)
                 }
             } label: {
                 let totalMark = course.assignments.reduce(0) { $0 + ($1.mark ?? 0) }

@@ -35,14 +35,11 @@ struct EditCourseView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Edit Course")
             .toolbar{
-                ToolbarItem(placement: .cancellationAction) {
+                ToolbarItem(placement: .primaryAction) {
                     Button("Cancel") {
                         dismiss()
                     }.foregroundColor(.red)
                 }
-//                ToolbarItem(placement: .primaryAction) {
-//                    Button("Save", action: SaveChanges)
-//                }
             }
         }
     }
