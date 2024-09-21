@@ -6,26 +6,27 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @State private var path = [Course]()
-
+    
     var body: some View {
-        NavigationStack(path: $path){
+        NavigationStack{
             CoursesListingView()
                 .navigationTitle("Courses")
                 .toolbar{
-                    Button("Add Courses", systemImage: "plus", action: AddCourse)
+                    ToolbarItem(placement: .primaryAction){
+                        NavigationLink {
+                            AddCourseView()
+                                .navigationBarBackButtonHidden(true)
+                            } label: {
+                                Image(systemName: "plus")
+                            }
+                        }
+                    }
                 }
         }
-    }
-    
-    func AddCourse(){
-        let course = Course()
-        modelContext.insert(course)
-        path = [course]
-    }
 }
 
 #Preview {

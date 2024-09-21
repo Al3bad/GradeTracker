@@ -10,7 +10,9 @@ import SwiftData
 
 struct AddCourseView: View {
     @Environment(\.dismiss) var dismiss
-    @Bindable var course: Course
+    @Environment(\.modelContext) var modelContext
+    
+    @State private var course: Course = Course()
     @State private var newAssignment = ""
     
     var body: some View {
@@ -39,12 +41,15 @@ struct AddCourseView: View {
                     }.foregroundColor(.red)
                 }
                 ToolbarItem(placement: .primaryAction) {
-                    Button("Add") {
-                        print("Added")
-                    }
+                    Button("Add", action: AddCourse)
                 }
             }
         }
+    }
+    
+    func AddCourse(){
+        modelContext.insert(course)
+        dismiss()
     }
 }
 
@@ -58,7 +63,7 @@ struct AddCourseView: View {
             credits: 12,
             goal: 80.0
             )
-        return AddCourseView(course: example)
+        return AddCourseView()
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")
